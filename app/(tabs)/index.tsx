@@ -19,7 +19,7 @@ const Index = () => {
                         </View>
                     )
                 }}
-                keyExtractor={(item) => item.name}
+                keyExtractor={(item) => item.id.toString()}
                 numColumns={2}
                 columnWrapperClassName='gap-7'
                 contentContainerClassName='gap-7 px-5 pb-32'
