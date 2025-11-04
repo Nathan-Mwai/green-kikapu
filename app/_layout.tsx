@@ -1,12 +1,23 @@
 import { Stack } from "expo-router";
-import {useFonts, Rubik_900Black} from '@expo-google-fonts/rubik'
+import {
+    useFonts,
+    Rubik_400Regular,
+    Rubik_700Bold,
+    Rubik_600SemiBold,
+    Rubik_500Medium,
+    Rubik_300Light
+} from '@expo-google-fonts/rubik'
 import "./global.css"
 import * as SplashScreen from 'expo-splash-screen';
 import {useEffect} from 'react';
 
 export default function RootLayout() {
     const [loaded, error] = useFonts({
-        Rubik_900Black,
+        Rubik_400Regular,
+        Rubik_700Bold,
+        Rubik_600SemiBold,
+        Rubik_500Medium,
+        Rubik_300Light,
     });
 
     useEffect(() => {

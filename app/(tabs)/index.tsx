@@ -2,6 +2,8 @@ import {FlatList, Pressable, Text, View} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import {offers} from "@/constants";
+import MenuCard from "@/components/MenuCard";
+import {MenuItem} from "@/type";
 
 const Index = () => {
     return (
@@ -11,7 +13,7 @@ const Index = () => {
                 renderItem={({item, index})=>{
                     return(
                         <View className={'flex-1 max-w-[48%]'}>
-                               <Text>{item.title}</Text>
+                               <MenuCard item={item as MenuItem}/>
                         </View>
                     )
                 }}

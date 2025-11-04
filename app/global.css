@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+    .menu-card {
+        @apply relative py-9 px-3.5 pt-24 flex items-center justify-end bg-white shadow-md shadow-black/10 rounded-3xl;
+    }
+
+    .base-bold {
+        @apply text-lg font-rubik-bold !important;
+    }
+
     .paragraph-bold {
         @apply text-base font-rubik-bold;
     }
@@ -14,6 +22,15 @@
     .paragraph-medium {
         @apply text-base font-rubik-medium;
     }
+
+    .body-medium {
+        @apply text-sm font-rubik-medium;
+    }
+
+    .body-regular {
+        @apply text-sm font-rubik;
+    }
+
     .small-bold{
         @apply text-sm font-rubik-bold
     }
