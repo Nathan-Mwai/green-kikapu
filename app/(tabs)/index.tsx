@@ -1,9 +1,11 @@
 import {FlatList, Text, View} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
-import {offers} from "@/constants";
+import {categories, offers} from "@/constants";
 import MenuCard from "@/components/MenuCard";
 import {MenuItem} from "@/type";
+import SearchBar from "@/components/SearchBar";
+import Filter from "@/components/Filter";
 
 const Index = () => {
     return (
@@ -17,7 +19,7 @@ const Index = () => {
                         </View>
                     )
                 }}
-                keyExtractor={item => item.id}
+                keyExtractor={(item) => item.name}
                 numColumns={2}
                 columnWrapperClassName='gap-7'
                 contentContainerClassName='gap-7 px-5 pb-32'
@@ -49,8 +51,9 @@ const Index = () => {
 
                             <Text>CartButton</Text>
                         </View>
-                        <Text>Search Input</Text>
-                        <Text>Filter</Text>
+
+                        <SearchBar/>
+                        <Filter categories={categories}/>
                     </View>
                 )}
 
