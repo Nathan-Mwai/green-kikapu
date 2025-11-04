@@ -57,7 +57,7 @@ const Index = () => {
                     </View>
                 )}
 
-                ListEmptyComponent={() => !loading && <Text>No results</Text>}
+                ListEmptyComponent={() => <Text>No results</Text>}
             />
         </SafeAreaView>
     )
