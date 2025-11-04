@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .paragraph-bold {
+        @apply text-base font-rubik-bold;
+    }
+
+    .paragraph-semibold {
+        @apply text-base font-rubik-semibold;
+    }
+
+    .paragraph-medium {
+        @apply text-base font-rubik-medium;
+    }
+    .small-bold{
+        @apply text-sm font-rubik-bold
+    }
+}
