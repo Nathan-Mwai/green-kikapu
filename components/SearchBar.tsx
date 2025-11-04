@@ -1,7 +1,7 @@
 import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native'
 import React, {useState} from 'react'
-import {useDebouncedCallback} from "use-debounce";
-import {router} from "expo-router";
+import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native'
+import React, {useState} from 'react'
 
 const SearchBar = () => {
     const [query, setQuery] = useState()
