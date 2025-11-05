@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .flex-center {
+        @apply flex items-center justify-center;
+    }
+
+    .flex-between {
+        @apply flex items-center justify-between;
+    }
+
+    .flex-start {
+        @apply flex items-start justify-center;
+    }
+}
+
+@layer components {
+    .menu-card {
+        @apply relative py-9 px-3.5 pt-24 flex items-center justify-end bg-white shadow-md shadow-black/10 rounded-3xl;
+    }
+
+    .searchbar {
+        @apply relative flex flex-row items-center justify-center w-full bg-white shadow-md shadow-black/10 rounded-full  font-rubik-medium text-dark-100 gap-5;
+    }
+
+    .filter {
+        @apply px-6 py-3 rounded-full mr-2 shadow-sm shadow-black/10;
+    }
+
+    .base-bold {
+        @apply text-lg font-rubik-bold !important;
+    }
+
+    .paragraph-bold {
+        @apply text-base font-rubik-bold;
+    }
+
+    .paragraph-semibold {
+        @apply text-base font-rubik-semibold;
+    }
+
+    .paragraph-medium {
+        @apply text-base font-rubik-medium;
+    }
+
+    .body-medium {
+        @apply text-sm font-rubik-medium;
+    }
+
+    .body-regular {
+        @apply text-sm font-rubik;
+    }
+
+    .small-bold{
+        @apply text-sm font-rubik-bold
+    }
+}
