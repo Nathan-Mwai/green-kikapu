@@ -1,4 +1,4 @@
-import {Account, Avatars, Client, Databases, ID, TablesDB} from "react-native-appwrite";
+import {Account, Avatars, Client, Databases, ID, Query, TablesDB} from "react-native-appwrite";
 import {CreateUserParams, SignInParams} from "@/type";
 
 export const appwriteConfig = {
@@ -26,7 +26,8 @@ export const createUser = async ({name,email,password}:CreateUserParams) => {
         const newAccount = await account.create({
             userId:ID.unique(),
             email,
-            password
+            password,
+            name
         });
         if (!newAccount) throw new Error;
 
@@ -52,5 +53,24 @@ export const signIn = async ({email,password}:SignInParams) => {
         const session = await account.createEmailPasswordSession({email,password});
     }catch (error) {
         throw new Error(error as string)
+    }
+}
+
+export const getCurrentUser = async () => {
+    try {
+        const currentAccount = await account.get()
+        if(!currentAccount) throw new Error;
+
+        const currentUser = await tablesDB.listRows({
+            databaseId:appwriteConfig.databaseId!,
+            tableId:appwriteConfig.userTableId,
+            queries:[Query.equal('accountId',currentAccount.$id)]
+        })
+
+        if(!currentUser) throw new Error;
+        return currentUser.rows[0]
+    }catch (error) {
+        console.error(error)
+        throw new Error(error as string);
     }
 }
