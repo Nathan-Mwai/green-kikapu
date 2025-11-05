@@ -17,6 +17,19 @@
 }
 
 @layer components {
+
+    .custom-btn {
+        @apply bg-primary rounded-full p-3 w-full flex flex-row justify-center;
+    }
+
+    .label {
+        @apply text-base text-start w-full font-rubik-medium text-gray-500 pl-2;
+    }
+
+    .input {
+        @apply rounded-lg p-3 w-full text-base font-rubik-semibold text-dark-100 border-b leading-5;
+    }
+
     .menu-card {
         @apply relative py-9 px-3.5 pt-24 flex items-center justify-end bg-white shadow-md shadow-black/10 rounded-3xl;
     }
@@ -31,6 +44,14 @@
 
     .base-bold {
         @apply text-lg font-rubik-bold !important;
+    }
+
+    .base-semibold {
+        @apply text-lg font-rubik-semibold;
+    }
+
+    .base-regular {
+        @apply text-lg font-rubik;
     }
 
     .paragraph-bold {
