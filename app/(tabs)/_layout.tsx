@@ -1,7 +1,10 @@
-import { Stack } from "expo-router";
+import {Redirect, Slot, Stack} from "expo-router";
 
 const TabLayout = () => {
-    return <Stack screenOptions={{ headerShown: false }} />;
+    const isAuthenticated = false
+
+    if(!isAuthenticated) return <Redirect href={'/sign-in'}/>
+    return <Slot />;
 };
 
 export default TabLayout;
