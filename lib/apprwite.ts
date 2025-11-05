@@ -1,0 +1,5 @@
+export const apprwiteConfig ={
+    endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
+    platform: 'com.nathan.greenkikapu',
+    projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
+}
