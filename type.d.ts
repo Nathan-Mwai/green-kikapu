@@ -1,4 +1,6 @@
-export interface MenuItem{
+import {Models} from 'react-native-appwrite'
+
+export interface MenuItem extends Models.Row{
     name: string;
     price: number;
     image_url: string;
@@ -9,11 +11,17 @@ export interface MenuItem{
     // type: string;
 }
 
-export interface Category {
+export interface Category extends Models.Row{
     name: string;
     description: string;
 }
 
+
+export interface User extends Models.Row {
+    name: string;
+    email: string;
+    avatar: string;
+}
 export interface CustomInputProps {
     placeholder?: string;
     value?: string;

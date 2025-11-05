@@ -10,8 +10,11 @@ import {
 import "./global.css"
 import * as SplashScreen from 'expo-splash-screen';
 import {useEffect} from 'react';
+import useAuthStore from "@/store/auth.store";
 
 export default function RootLayout() {
+
+    const {isLoading, fetchAuthenticatedUser} = useAuthStore()
     const [loaded, error] = useFonts({
         Rubik_400Regular,
         Rubik_700Bold,
@@ -26,9 +29,12 @@ export default function RootLayout() {
         }
     }, [loaded, error]);
 
-    if (!loaded && !error) {
-        return null;
-    }
+    useEffect(() => {
+        fetchAuthenticatedUser()
+    }, []);
+
+
+    if (!loaded || isLoading) return null;
 
     return <Stack screenOptions={{ headerShown: false }} />;
 }

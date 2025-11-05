@@ -8,6 +8,7 @@ import SearchBar from "@/components/SearchBar";
 import Filter from "@/components/Filter";
 
 const Index = () => {
+
     return (
         <SafeAreaView className={'bg-white h-full'}>
             <FlatList
