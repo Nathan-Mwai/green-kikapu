@@ -51,8 +51,9 @@ export const createUser = async ({name,email,password}:CreateUserParams) => {
 export const signIn = async ({email,password}:SignInParams) => {
     try {
         const session = await account.createEmailPasswordSession({email,password});
+        return session
     }catch (error) {
-        throw new Error((error as any)?.message ?? String(error))
+        throw error instanceof Error ? error : new Error(String(error));
     }
 }
 
