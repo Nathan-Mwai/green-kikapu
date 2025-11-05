@@ -24,7 +24,7 @@ const SignUp = () => {
 
             router.replace("/")
         }catch(err:any) {
-            Alert.alert("Error",err.message)
+            Alert.alert("Error", err instanceof Error ? err.message : "Failed to create account")
         }finally {
             setIsSubmitting(false)
         }

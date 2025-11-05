@@ -5,7 +5,7 @@ export const appwriteConfig = {
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
   platform: 'com.nathan.greenkikapu',
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
-    databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATSBASE_ID,
+    databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID,
     userTableId:"user",
 };
 
@@ -29,7 +29,7 @@ export const createUser = async ({name,email,password}:CreateUserParams) => {
             password,
             name
         });
-        if (!newAccount) throw new Error;
+        if (!newAccount) throw new Error("Failed to create account")
 
         await signIn({email,password});
 
@@ -44,7 +44,7 @@ export const createUser = async ({name,email,password}:CreateUserParams) => {
         });
 
     }catch(error){
-        throw new Error(error as string)
+        throw error instanceof Error ? error : new Error(String(error));
     }
 }
 
@@ -52,14 +52,14 @@ export const signIn = async ({email,password}:SignInParams) => {
     try {
         const session = await account.createEmailPasswordSession({email,password});
     }catch (error) {
-        throw new Error(error as string)
+        throw new Error((error as any)?.message ?? String(error))
     }
 }
 
 export const getCurrentUser = async () => {
     try {
         const currentAccount = await account.get()
-        if(!currentAccount) throw new Error;
+        if(!currentAccount) throw new Error("No authenticated account found");
 
         const currentUser = await tablesDB.listRows({
             databaseId:appwriteConfig.databaseId!,
@@ -67,10 +67,12 @@ export const getCurrentUser = async () => {
             queries:[Query.equal('accountId',currentAccount.$id)]
         })
 
-        if(!currentUser) throw new Error;
-        return currentUser.rows[0]
+        if(!currentUser || currentUser.rows.length === 0) {
+            throw new Error("User record not found in database");
+             }
+         return currentUser.rows[0];
     }catch (error) {
         console.error(error)
-        throw new Error(error as string);
+        throw error instanceof Error ? error : new Error(String(error));
     }
 }
