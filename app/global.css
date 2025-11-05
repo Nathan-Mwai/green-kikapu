@@ -46,6 +46,14 @@
         @apply text-lg font-rubik-bold !important;
     }
 
+    .base-semibold {
+        @apply text-lg font-rubik-semibold;
+    }
+
+    .base-regular {
+        @apply text-lg font-rubik;
+    }
+
     .paragraph-bold {
         @apply text-base font-rubik-bold;
     }

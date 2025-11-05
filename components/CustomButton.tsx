@@ -22,7 +22,6 @@ const CustomButton = (
                     <Text className={cn('text-white-100 paragraph-semibold', textStyle)}>{title}</Text>
                 )}
             </View>
-            <Text>CustomButton</Text>
         </TouchableOpacity>
     )
 }
