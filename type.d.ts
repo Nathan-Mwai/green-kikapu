@@ -50,3 +50,9 @@ export interface SignInParams {
     email: string;
     password: string;
 }
+
+interface TabBarIconProps {
+    focused: boolean;
+    icon: ImageSourcePropType;
+    title: string;
+}
