@@ -18,8 +18,8 @@ const Profile = () => {
         { icon: 'help-circle-outline', title: 'Help & Support', route: null },
     ]
 
-    const handleLogout = () => {
-        logout()
+    const handleLogout = async () => {
+        await logout()
         router.replace('/sign-in')
     }
 
