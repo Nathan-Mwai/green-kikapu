@@ -69,3 +69,32 @@ interface TabBarIconProps {
     icon: ImageSourcePropType;
     title: string;
 }
+
+export interface CartItem {
+    id: string;
+    productName: string;
+    productImage: string;
+    quantity: number;
+    unit: string;
+    pricePerUnit: number;
+    farmer: Farmer;
+}
+
+export interface CartGroup {
+    farmerId: string;
+    farmerName: string;
+    farmerLocation: string;
+    farmerAvatar: string;
+    isVerified: boolean;
+    items: CartItem[];
+}
+
+export type DeliveryMethod = 'pickup' | 'delivery';
+export type PaymentMethod = 'mpesa' | 'card';
+
+export interface OrderSummary {
+    subtotal: number;
+    deliveryFee: number;
+    serviceFee: number;
+    total: number;
+}

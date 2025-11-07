@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { farmers } from '@/constants'
 import FarmerCard from '@/components/FarmerCard'
 import cn from 'clsx'
+import useCartStore from '@/store/cart.store'
 
 const MenuDetails = () => {
     const params = useLocalSearchParams()
@@ -14,6 +15,7 @@ const MenuDetails = () => {
     const [selectedFarmerId, setSelectedFarmerId] = useState<string | null>(null)
     const [quantity, setQuantity] = useState<string>('1')
     
+    const { addItem } = useCartStore()
     const selectedFarmer = farmers.find(f => f.id === selectedFarmerId)
     
     const handleAddToCart = () => {
@@ -33,11 +35,25 @@ const MenuDetails = () => {
             return
         }
         
-        // TODO: Implement cart logic
+        // Add to cart
+        addItem(
+            {
+                name: name as string,
+                image: image_url as string,
+                price: Number(price),
+                unit: selectedFarmer!.unit
+            },
+            qty,
+            selectedFarmer!
+        )
+        
         Alert.alert(
             'Added to Cart',
             `${qty} ${selectedFarmer?.unit} of ${name} from ${selectedFarmer?.name} added to cart`,
-            [{ text: 'OK' }]
+            [
+                { text: 'View Cart', onPress: () => router.push('/(tabs)/cart') },
+                { text: 'Continue Shopping', style: 'cancel' }
+            ]
         )
     }
 
