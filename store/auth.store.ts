@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import {User} from "@/type";
-import {getCurrentUser} from "@/lib/appwrite";
+import {account, getCurrentUser} from "@/lib/appwrite";
 
 type AuthState = {
     isAuthenticated: boolean;
@@ -12,6 +12,7 @@ type AuthState = {
     setLoading: (loading: boolean) => void;
 
     fetchAuthenticatedUser: () => Promise<void>;
+    logout: () => Promise<void>;
 }
 
 const useAuthStore = create<AuthState>((set) => ({
@@ -36,6 +37,16 @@ const useAuthStore = create<AuthState>((set) => ({
             set({ isAuthenticated: false, user: null })
         } finally {
             set({ isLoading: false });
+        }
+    },
+
+    logout: async () => {
+        try {
+            await account.deleteSession('current');
+        } catch (e) {
+            console.log('logout error', e);
+        } finally {
+            set({ isAuthenticated: false, user: null });
         }
     }
 }))

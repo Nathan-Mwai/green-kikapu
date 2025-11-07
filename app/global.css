@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,11 +36,11 @@
     }
 
     .searchbar {
-        @apply relative flex flex-row items-center justify-center w-full bg-white shadow-md shadow-black/10 rounded-full  font-rubik-medium text-dark-100 gap-5;
+        @apply relative flex flex-row items-center w-full bg-white shadow-md shadow-black/10 rounded-2xl font-rubik-medium text-dark-100;
     }
 
     .filter {
-        @apply px-6 py-3 rounded-full mr-2 shadow-sm shadow-black/10;
+        @apply px-5 py-2.5 rounded-full mr-2 shadow-sm shadow-black/10 flex-row items-center;
     }
 
     .base-bold {
