@@ -66,6 +66,10 @@
         @apply text-base font-rubik-medium;
     }
 
+    .paragraph-regular {
+        @apply text-base font-rubik;
+    }
+
     .body-medium {
         @apply text-sm font-rubik-medium;
     }

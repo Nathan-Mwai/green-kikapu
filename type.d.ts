@@ -16,6 +16,19 @@ export interface Category extends Models.Row{
     description: string;
 }
 
+export interface Farmer {
+    id: string;
+    name: string;
+    location: string;
+    distance: string; // e.g., "2.5 km away"
+    avatar: string;
+    isVerified: boolean;
+    postedDate: string; // ISO date string
+    availableQuantity: number;
+    unit: string; // e.g., "kg", "pieces"
+    rating: number;
+    totalDeliveries: number;
+}
 
 export interface User extends Models.Row {
     name: string;
